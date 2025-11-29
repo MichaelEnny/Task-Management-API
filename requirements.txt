@@ -3,3 +3,6 @@ Flask-SQLAlchemy==3.0.5
 Flask-JWT-Extended==4.5.2
 python-dotenv==1.0.0
 pytest==7.4.0
+# TODO: Update to Flask 3.x for better async support
+# redis>=4.0  # Uncomment when cache layer is ready
+# celery  # For background task processing (see docs/architecture.md)

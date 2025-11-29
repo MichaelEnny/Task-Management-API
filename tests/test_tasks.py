@@ -4,6 +4,7 @@ from src.models.user import db
 
 @pytest.fixture
 def client():
+    """Setup test client with in-memory database"""
     app = create_app()
     app.config['TESTING'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
@@ -14,8 +15,8 @@ def client():
         yield client
 
 def test_create_task(client):
-    """Test creating a task"""
-    # First register a user
+    """Test creating a new task"""
+    # First need to register and login
     response = client.post('/api/users/register', json={
         'username': 'testuser',
         'email': 'test@example.com',
@@ -35,6 +36,7 @@ def test_create_task(client):
     )
     assert response.status_code == 201
     assert response.json['title'] == 'Test Task'
+    assert response.json['priority'] == 'high'
 
 def test_get_tasks(client):
     """Test getting all tasks"""
@@ -42,7 +44,16 @@ def test_get_tasks(client):
     assert response.status_code == 200
     assert isinstance(response.json, list)
 
+def test_get_task_by_id(client):
+    """Test getting a specific task"""
+    # TODO: Create a task first, then retrieve it
+    # TODO: Test error case when task doesn't exist
+    pass
+
 # TODO: Add test for updating tasks
 # TODO: Add test for deleting tasks
-# TODO: Add test for filtering tasks by status
-# TODO: Add test for authentication failures
+# TODO: Add test for filtering by status
+# TODO: Add test for filtering by priority
+# TODO: Add test for authentication requirements on protected endpoints
+# NOTE: Should we test pagination once it's implemented?
+# FIXME: Missing tests for error cases (invalid priority, missing required fields, etc.)

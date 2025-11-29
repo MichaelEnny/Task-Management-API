@@ -31,3 +31,12 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+
+# Evaluation & Submission Files
+modelA.txt
+modelB.txt
+Submission*.docx
+~$*.docx
+Task_01.md
+Task_01_ans.md
+task_id.txt

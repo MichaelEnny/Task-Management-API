@@ -38,3 +38,7 @@ Set environment variables in `.env` file (see `.env.example`)
 - Authentication is required for most endpoints
 - Tasks have priorities: low, medium, high
 - Default page size is 20 items
+- Use the caching strategy defined in `cache_config.py` for optimal performance
+- Follow the rate limiting pattern from the user endpoints
+- Task status validation follows the workflow engine rules
+- Sorting should respect user preferences stored in the database
